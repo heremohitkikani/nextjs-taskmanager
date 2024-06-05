@@ -38,7 +38,9 @@ export function middleware(request) {
         );
       }
 
-      return NextResponse.redirect(new URL("/login", request.url));
+      return NextResponse.redirect(new URL("/login", request.url), {
+        status: 302, // Initial status code
+      });
     } else {
       // varify...
     }
