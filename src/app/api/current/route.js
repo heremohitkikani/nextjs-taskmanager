@@ -17,6 +17,11 @@ export async function GET(request) {
     }
 
     // Verify JWT token
+    if(!authToken ) {
+      return NextResponse.json({
+        message:'user is not login !!'
+      });
+    }
     const decodedToken = jwt.verify(authToken, process.env.JWT_KEY);
 
     // Retrieve user data based on the _id from the decoded token
